@@ -250,7 +250,7 @@ The quick brown fox jumps over the lazy dog."""
     
     if message.content.startswith("~reddit"):
         subreddit = reddit.subreddit("VaporwaveAesthetics")
-        await message.channel.send(subreddit.title)
+        await message.channel.send(subreddit.display_name)
         s = []
         for submission in subreddit.hot(limit=75):
             s.append(submission)
