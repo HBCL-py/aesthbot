@@ -1,7 +1,7 @@
-discord.py==1.0.0a
+discord.py==1.0.0a1473+g607771c
 random
 time
-asyncio
+asyncio==3.4.3
 aiohttp
 websockets
 chardet
