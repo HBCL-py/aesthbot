@@ -262,4 +262,4 @@ The quick brown fox jumps over the lazy dog."""
 
 
         
-bot.run(os.environ['REDDIT_USERNAME'])
+bot.run(os.environ['BOT_TOKEN'])
