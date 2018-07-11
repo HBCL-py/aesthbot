@@ -4,6 +4,16 @@ from random import randint
 import time
 from discord.ext import commands
 import asyncio
+import praw
+
+reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
+                     client_secret=os.environ['REDDIT_SECRET'],
+                     user_agent="windows:aesthbot.discordbot:v1.0.0 (by /u/thehellbell)")
+
+if reddit.read_only:
+    print("The Reddit instance is in READ ONLY mode.")
+else:
+    print("The Reddit instance is in AUTHORIZED mode.")
 
 bot = discord.Client()
 owners = [264195450859552779, 403557634998796288]
@@ -237,6 +247,18 @@ The quick brown fox jumps over the lazy dog."""
             for server in bot.guilds:
                 await message.channel.send(str(c)+".-) "+str(server.name)+"; ID = "+str(server.id)+"~")
                 c += 1
+    
+    if message.content.startswith("~reddit"):
+        subreddit = reddit.subreddit("vaporwaveaesthetics")
+        s = []
+        for submission in subreddit.hot(limit=75):
+            s.append(submission)
+        x = randint(0,9)
+        s = s[x]
+        e = discord.Embed(title=s.title,
+                          url=s.url,
+                          description=s)
+        await message.channel.send(embed=e)
     
     if message.content.startswith("~help"):
         e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
