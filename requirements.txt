@@ -3,4 +3,4 @@ asyncio==3.4.3
 aiohttp
 websockets
 chardet
-praw==6.0.0
+git+https://github.com/praw-dev/praw/archive/master.zip
