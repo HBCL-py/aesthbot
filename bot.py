@@ -270,6 +270,7 @@ The quick brown fox jumps over the lazy dog."""
 **~aesth** *(text)* => Turns given text (from the english alphabet, that is) into a simple aesthetic font. If no text is present, it shows two sample pangrams.
 **~echo** *<text>* => Repeats text given by the user.
 **~aesnick** => Turns any normal font part (from the english alphabet, that is) from your name to a simple aesthetic font and turns it into your nickname. The bot must have a higher role than you for it to work, and manage nicknames permissions too!
+**~reddit** => Takes a random post from the hot section or the r/VaporwaveAesthetics subreddit.
 **=======BOT OWNER ONLY COMMANDS=======**
 **~night** => Shuts down the bot.
 **~gameset** *<text>* => Sets the playing status of the bot.
