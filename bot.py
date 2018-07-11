@@ -89,7 +89,7 @@ description="""**Owners:** HBell_CL.py#5144 and Alexei Стуков#1672 =^.^=
     if message.content.startswith('~night'):
         if message.author.id in owners:
             print("SHUTDOWN STARTING...")
-            t = await message.channel.send('Shutting down... ')
+            t = await message.channel.send('Restarting... ')
             for i in range(3):
                 await asyncio.sleep(0.75)
                 m = '.'*(i+1)
