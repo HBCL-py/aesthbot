@@ -4,8 +4,6 @@ import time
 from discord.ext import commands
 import asyncio
 
-bla = str(input("Enter the bot's token :v :"))
-
 bot = discord.Client()
 owners = [264195450859552779, 403557634998796288]
 
@@ -264,4 +262,4 @@ The quick brown fox jumps over the lazy dog."""
 
 
         
-bot.run(bla)
+bot.run(process.env.BOT_TOKEN)
