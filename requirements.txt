@@ -3,4 +3,4 @@ asyncio==3.4.3
 aiohttp
 websockets
 chardet
-PRAW
+PRAW==6.0.0
