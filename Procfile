@@ -1,1 +1,1 @@
-worker: bot stuff rewrite.py
+worker: python bot stuff rewrite.py
