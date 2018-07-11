@@ -1,0 +1,7 @@
+discord.py==1.0.0a
+random
+time
+asyncio
+aiohttp
+websockets
+PRAW
