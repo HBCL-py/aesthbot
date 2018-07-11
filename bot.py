@@ -1,4 +1,5 @@
 import discord
+import os
 from random import randint
 import time
 from discord.ext import commands
