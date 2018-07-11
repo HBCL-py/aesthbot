@@ -8,7 +8,7 @@ import praw
 
 reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
-                     user_agent="windows:aesthbot.discordbot:v1.0.0 (by /u/thehellbell)")
+                     user_agent="windows:aesthbot.discordbot:v1.0.2 (by /u/thehellbell)")
 
 if reddit.read_only:
     print("The Reddit instance is in READ ONLY mode.")
@@ -249,7 +249,7 @@ The quick brown fox jumps over the lazy dog."""
                 c += 1
     
     if message.content.startswith("~reddit"):
-        subreddit = reddit.subreddit("vaporwaveaesthetics")
+        subreddit = reddit.subreddit("VaporwaveAesthetics")
         await message.channel.send(subreddit.title)
         s = []
         for submission in subreddit.hot(limit=75):
