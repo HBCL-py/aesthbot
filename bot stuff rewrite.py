@@ -4,6 +4,8 @@ import time
 from discord.ext import commands
 import asyncio
 
+bla = str(raw_input("Enter the bot's token :v :"))
+
 bot = discord.Client()
 owners = [264195450859552779, 403557634998796288]
 
@@ -114,34 +116,6 @@ The quick brown fox jumps over the lazy dog."""
             await message.delete()
         else:
             await message.channel.send("Please, input the message to echo.")
-            
-
-    if message.content.startswith('~flew'):
-        await asyncio.sleep(1)
-        await message.channel.send("hey")
-        def check(m):
-            return m.channel == message.channel and m.author != bot.user
-        try:
-            await bot.wait_for('message', check = check, timeout = 7)
-            await asyncio.sleep(1)
-            m = randint(0,15)
-            n = ["h","e","aaaaa","haha dab on you","gay","yes","haha you spinturbate","no u","DABSPACITO 2 2 is REAL","get dabbed on","MY D I C k","*t-poses on you*","*t-dabs*","fuck you","youer mom gay","dab"]
-            await message.channel.send(n[m])
-        except asyncio.TimeoutError:
-            await asyncio.sleep(1)
-            await message.channel.send("reply you brainless detergent")
-            try:
-                await bot.wait_for('message', check = check, timeout = 5)
-                await asyncio.sleep(1)
-                m = randint(0,10)
-                n = ["i'll dab on you","you're'er gay","h","you'er mom dab","fuck","e","*teleports behind your back*","*dies*","aaaaa","despacito on you","dab"]
-                await message.channel.send(n[m])
-            except asyncio.TimeoutError:
-                await message.channel.send('fuck you')
-
-    if message.content.startswith('~fvert'):
-        f = discord.File(".\\\images\\\iaaaa.png", filename='FuckingVertecks.png')
-        await message.channel.send(file=f)
 
     if message.content.startswith('~aesnick'):
         tab =  "　ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ１２３４５６７８９０！＂＃＄％＆／（）＝＇＼？＋＊［｛＾］｝｀，；．：－＿＜＞"
@@ -193,14 +167,6 @@ The quick brown fox jumps over the lazy dog."""
                     message = await message.channel.send(str(user.mention))
                 if i < 4:
                     await message.delete()
-                    
-    if message.content.startswith('~lewd'):
-        if message.channel.is_nsfw():
-            await message.channel.send("Uploading reaction gif...")
-            a = discord.File(".\\\images\\\lewd.gif")
-            await message.channel.send(file=a)
-        else:
-            await message.channel.send("You need to be in a NSFW channel!")
     
     if message.content.startswith('~userinfo'):
         error1 = "Please input a valid ID/mention."
@@ -266,30 +232,6 @@ The quick brown fox jumps over the lazy dog."""
     if "<@455225304991137792>" in message.content:
         await message.channel.send("I'm ready!")
 
-    if message.content.startswith("~blepsi"):
-        await asyncio.sleep(1.5)
-        i = randint(1,10)
-        if i == 1:
-            await message.channel.send("'All hail our Deutsche drubk admin, shibe king ＢＬＥＰ'")
-        elif i == 2:
-            await message.channel.send("*To blepsi*: We love the way you bring out the <:arnold2:398624908479037450> in people")
-        elif i == 3:
-            await message.channel.send("*Dear blep*: You have the most perfect belly button there is :eyes:")
-        elif i == 4:
-            await message.channel.send("*From lils, to blep*: 'Your long slender hairy leg snapchats are delicious :eyes:'")
-        elif i == 5:
-            await message.channel.send("Blep: Keep up with the pinned messages <:arnold2:398624908479037450>")
-        elif i == 6:
-            await message.channel.send("Come to the blep side (commanded by dictator blep); we have cookies~ ~~no this is not me being forced to write good things about blep i swear~~")
-        elif i == 7:
-            await message.channel.send("You're the ~~totally not~~ straight <:arnold2:398624908479037450> leader everyone needs, but nobody deserves~")
-        elif i == 8:
-            await message.channel.send('"Better than communism." - Vladimir Lenin about Blepism, 2010')
-        elif i == 9:
-            await message.channel.send('"New Blep Order 10/10; no tankies anywhere!" - Left-Communist about the Arcade, 2019')
-        elif i == 10:
-            await message.channel.send(":] ~~We're totally not gonna overthrow you in a revolution, duh~~ - The Hell Bell about Blep's dictatorship, 2018")
-
     if message.content.startswith("~servers"):
         if message.author.id in owners:
             c = 1
@@ -306,7 +248,6 @@ The quick brown fox jumps over the lazy dog."""
 **~aesth** *(text)* => Turns given text (from the english alphabet, that is) into a simple aesthetic font. If no text is present, it shows two sample pangrams.
 **~echo** *<text>* => Repeats text given by the user.
 **~aesnick** => Turns any normal font part (from the english alphabet, that is) from your name to a simple aesthetic font and turns it into your nickname. The bot must have a higher role than you for it to work, and manage nicknames permissions too!
-**~lewd** => Sends a reaction image, must be in NSFW channel :eyes:
 **=======BOT OWNER ONLY COMMANDS=======**
 **~night** => Shuts down the bot.
 **~gameset** *<text>* => Sets the playing status of the bot.
@@ -323,4 +264,4 @@ The quick brown fox jumps over the lazy dog."""
 
 
         
-bot.run('NDU1MjI1MzA0OTkxMTM3Nzky.Df45dA.2czkYIiiimUc5RceSyp2qr1Z9Fk')
+bot.run(bla)
