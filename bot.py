@@ -262,4 +262,4 @@ The quick brown fox jumps over the lazy dog."""
 
 
         
-bot.run(process.env.BOT_TOKEN)
+bot.run(BOT_TOKEN)
