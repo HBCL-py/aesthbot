@@ -249,16 +249,8 @@ The quick brown fox jumps over the lazy dog."""
                 c += 1
     
     if message.content.startswith("~reddit"):
-        subreddit = reddit.subreddit("VaporwaveArt")
-        s = []
-        for submission in subreddit.hot(limit=25):
-            print(submission.title)
-        x = randint(0,74)
-        s = s[x]
-        e = discord.Embed(title=s.title,
-                          url=s.url,
-                          description=s)
-        await message.channel.send(embed=e)
+        for submission in reddit.subreddit('VaporwaveArt').hot(limit=25):
+            await message.channel.send(submission.title)
     
     if message.content.startswith("~help"):
         e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
