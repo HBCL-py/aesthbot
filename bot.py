@@ -251,9 +251,9 @@ The quick brown fox jumps over the lazy dog."""
     if message.content.startswith("~reddit"):
         subreddit = reddit.subreddit("VaporwaveArt")
         s = []
-        for submission in subreddit.submissions.hot(limit=75):
-            s.append(submission)
-        x = randint(0,9)
+        for submission in subreddit.hot(limit=25):
+            print(submission.title)
+        x = randint(0,74)
         s = s[x]
         e = discord.Embed(title=s.title,
                           url=s.url,
