@@ -249,7 +249,7 @@ The quick brown fox jumps over the lazy dog."""
                 c += 1
     
     if message.content.startswith("~reddit"):
-        for submission in reddit.subreddit('VaporwaveArt').hot(limit=25):
+        for submission in reddit.subreddit('vaporwaveart').hot(limit=25):
             await message.channel.send(submission.title)
     
     if message.content.startswith("~help"):
