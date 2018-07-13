@@ -26,6 +26,18 @@ async def on_ready():
     print("__________________________________________________________________________")
 
 @bot.event
+async def on_member_remove(member):
+    await message.channel.send(member.guild.system_channel, 'Farewell, {} :['.format(member.name))
+    
+@bot.event
+async def on_member_join(member):
+    await message.channel.send(member.guild.system_channel, 'Welcome, <@{}> :]'.format(member.id))
+
+@bot.event
+async def on_guild_ban(server,member):
+    await message.channel.send(server.system_channel, '{} just got banned. >:['.format(member.name))
+    
+@bot.event
 async def on_message(message):
     if message.author == bot.user:
         return
