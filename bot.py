@@ -27,15 +27,15 @@ async def on_ready():
 
 @bot.event
 async def on_member_remove(member):
-    await message.channel.send(member.guild.system_channel, 'Farewell, {} :['.format(member.name))
+    await member.guild.system_channel.send('Farewell, {} :['.format(member.name))
     
 @bot.event
 async def on_member_join(member):
-    await message.channel.send(member.guild.system_channel, 'Welcome, <@{}> :]'.format(member.id))
+    await member.guild.system_channel.send('Welcome, <@{}> :]'.format(member.id))
 
 @bot.event
-async def on_guild_ban(server,member):
-    await message.channel.send(server.system_channel, '{} just got banned. >:['.format(member.name))
+async def on_guild_ban(member):
+    await member.guild.system_channel.send('{} just got banned. >:['.format(member.name))
     
 @bot.event
 async def on_message(message):
