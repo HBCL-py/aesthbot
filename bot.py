@@ -27,15 +27,24 @@ async def on_ready():
 
 @bot.event
 async def on_member_remove(member):
-    await member.guild.system_channel.send('Farewell, {} :['.format(member))
+    try:
+        await member.guild.system_channel.send(':cry: Farewell, {} :['.format(member))
+    except AttributeError:
+        return
     
 @bot.event
 async def on_member_join(member):
-    await member.guild.system_channel.send('Welcome, <@{}> :]'.format(member.id))
-
+    try:  
+        await member.guild.system_channel.send(':wave: Welcome, <@{}> :]'.format(member.id))
+    except AttributeError:
+        return
+    
 @bot.event
 async def on_member_ban(server,member):
-    await server.system_channel.send('{} just got banned. >:['.format(member))
+    try:
+        await server.system_channel.send(':no_entry_sign: {} just got banned. >:[ :hammer:'.format(member))
+    except AttributeError:
+      return
     
 @bot.event
 async def on_message(message):
