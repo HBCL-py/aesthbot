@@ -28,14 +28,14 @@ async def on_ready():
 @bot.event
 async def on_member_remove(member):
     try:
-        await member.guild.system_channel.send(':cry: Farewell, {} :['.format(member))
+        await member.guild.system_channel.send(':cry: {} has left this server :['.format(member))
     except AttributeError:
         return
     
 @bot.event
 async def on_member_join(member):
     try:  
-        await member.guild.system_channel.send(':wave: Welcome, <@{}> :]'.format(member.id))
+        await member.guild.system_channel.send(':wave: <@{}> just joined this server :]'.format(member.id))
     except AttributeError:
         return
     
