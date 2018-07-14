@@ -271,7 +271,7 @@ The quick brown fox jumps over the lazy dog."""
     
     if message.content.startswith("~reddit"):
         for submission in reddit.subreddit('vaporwaveart').hot(limit=10):
-            message.channel.send(submission)
+            await message.channel.send(submission)
     
     if message.content.startswith("~help"):
         e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
