@@ -279,7 +279,7 @@ The quick brown fox jumps over the lazy dog."""
                           url=str(a.shortlink),
                           image=str(a.url),
                           description="Score: "+str(a.score))
-        await message.channel.send()
+        await message.channel.send(embed = e)
     
     if message.content.startswith("~help"):
         e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
