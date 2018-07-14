@@ -270,15 +270,19 @@ The quick brown fox jumps over the lazy dog."""
                 c += 1
     
     if message.content.startswith("~reddit"):
+        sr = ['vaporwaveart','vaporwaveaesthetics','artdeco']
+        y = randint(0,2)
         a = []
-        for submission in reddit.subreddit('vaporwaveart').hot(limit=30):
+        for submission in reddit.subreddit(sr[y]).hot(limit=30):
             a.append(submission)
         x = randint(0,29)
         a = a[x]
         e = discord.Embed(title=str(a.title),
                           url=str(a.shortlink),
-                          description="Score: "+str(a.score))
+                          description="Score: "+str(a.score),
+                          color=discord.Colour.purple())
         e.set_image(url=a.url)
+        e.set_footer(text="r/"+sr[y])
         await message.channel.send(embed = e)
     
     if message.content.startswith("~help"):
@@ -290,7 +294,7 @@ The quick brown fox jumps over the lazy dog."""
 **~aesth** *(text)* => Turns given text (from the english alphabet, that is) into a simple aesthetic font. If no text is present, it shows two sample pangrams.
 **~echo** *<text>* => Repeats text given by the user.
 **~aesnick** => Turns any normal font part (from the english alphabet, that is) from your name to a simple aesthetic font and turns it into your nickname. The bot must have a higher role than you for it to work, and manage nicknames permissions too!
-**~reddit** => Takes a random post from the hot section or the r/VaporwaveArt subreddit.
+**~reddit** => Takes a random post from the hot section of 3 different subreddits.
 **=======BOT OWNER ONLY COMMANDS=======**
 **~night** => Shuts down the bot.
 **~gameset** *<text>* => Sets the playing status of the bot.
