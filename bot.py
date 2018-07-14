@@ -275,10 +275,10 @@ The quick brown fox jumps over the lazy dog."""
             a.append(submission)
         x = randint(0,29)
         a = a[x]
-        e = discord.Embed(title=a.title,
-                          url=a.shortlink,
-                          image=a.url,
-                          description="Score: "+str(a.score)+")
+        e = discord.Embed(title=str(a.title),
+                          url=str(a.shortlink),
+                          image=str(a.url),
+                          description="Score: "+str(a.score))
         await message.channel.send()
     
     if message.content.startswith("~help"):
