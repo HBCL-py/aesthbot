@@ -6,6 +6,7 @@ from discord.ext import commands
 import asyncio
 import praw
 import prawcore
+import scripts.yt as yt
 
 reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
@@ -271,7 +272,7 @@ The quick brown fox jumps over the lazy dog."""
                 c += 1
     
     if message.content.startswith("~reddit"):
-        if len(message.content) > 7:
+        if len(message.content) > 8:
             msg = message.content.split(' ')
             msg.pop(0)
             sr = msg[0]
@@ -312,6 +313,16 @@ The quick brown fox jumps over the lazy dog."""
         else:
             await message.channel.send("Please give a subreddit!")
     
+    if message.content.startswith('~yt'):
+        if len(message.content) > 4:
+            msg = message.content.split(" ")
+            msg.pop(0)
+            msg = msg[0]
+            l = yt.search(msg)
+            x = randint(0,(len(l)-1))
+            l = l[x]
+            await message.channel.send(l)
+            
     if message.content.startswith("~help"):
         e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
 **~botinfo** => Sends information about this bot.
