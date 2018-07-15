@@ -279,7 +279,7 @@ The quick brown fox jumps over the lazy dog."""
         a = a[x]
         e = discord.Embed(title=str(a.title),
                           url=str(a.shortlink),
-                          description="Score: "+str(a.score)+"\nUploaded by /u/+"str(a.author),
+                          description="Score: "+str(a.score)+"\nUploaded by /u/"+str(a.author),
                           color=discord.Colour.purple())
         e.set_image(url=a.url)
         e.set_footer(text="r/"+sr[y])
