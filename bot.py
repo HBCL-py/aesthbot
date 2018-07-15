@@ -320,9 +320,10 @@ The quick brown fox jumps over the lazy dog."""
             msg.pop(0)
             msg = " ".join(msg)
             l = ytsearch(msg)
-            x = randint(0,(len(l)-1))
-            l = l[x]
+            l = l[0]
             await message.channel.send("http://www.youtube.com/watch?v="+l)
+        else:
+            await message.channel.send("Please give a search query!")
             
     if message.content.startswith("~help"):
         e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
@@ -334,6 +335,7 @@ The quick brown fox jumps over the lazy dog."""
 **~echo** *<text>* => Repeats text given by the user.
 **~aesnick** => Turns any normal font part (from the english alphabet, that is) from your name to a simple aesthetic font and turns it into your nickname. The bot must have a higher role than you for it to work, and manage nicknames permissions too!
 **~reddit** => Takes a random post from the hot section of a given subreddit. If more than one subreddit is given, then it will take only the first one.
+**~yt** *<query>* => Takes the first result from YT search.
 **=======BOT OWNER ONLY COMMANDS=======**
 **~night** => Shuts down the bot.
 **~gameset** *<text>* => Sets the playing status of the bot.
