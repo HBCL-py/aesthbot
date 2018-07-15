@@ -318,7 +318,7 @@ The quick brown fox jumps over the lazy dog."""
         if len(message.content) > 4:
             msg = message.content.split(" ")
             msg.pop(0)
-            msg = msg[0]
+            msg = " ".join(msg)
             l = ytsearch(msg)
             x = randint(0,(len(l)-1))
             l = l[x]
