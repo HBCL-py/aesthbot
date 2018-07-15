@@ -7,7 +7,7 @@ import asyncio
 import praw
 import prawcore
 from scripts.yt import *
-yt = scripts.yt
+
 
 reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
@@ -319,7 +319,7 @@ The quick brown fox jumps over the lazy dog."""
             msg = message.content.split(" ")
             msg.pop(0)
             msg = msg[0]
-            l = yt.search(msg)
+            l = ytsearch(msg)
             x = randint(0,(len(l)-1))
             l = l[x]
             await message.channel.send(l)
