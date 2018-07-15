@@ -297,7 +297,7 @@ The quick brown fox jumps over the lazy dog."""
                 print(yt)
                 yt = yt[0]
                 print(yt)
-                e.set_image("http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
+                e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
             z = "\nContent URL: "+a.url
         e.description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext)+z
         print(a.url)
