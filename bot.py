@@ -322,7 +322,7 @@ The quick brown fox jumps over the lazy dog."""
             l = ytsearch(msg)
             x = randint(0,(len(l)-1))
             l = l[x]
-            await message.channel.send(l)
+            await message.channel.send("http://www.youtube.com/watch?v="+l)
             
     if message.content.startswith("~help"):
         e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
