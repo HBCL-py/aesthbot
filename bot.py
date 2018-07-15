@@ -6,7 +6,8 @@ from discord.ext import commands
 import asyncio
 import praw
 import prawcore
-import scripts.yt as yt
+from scripts.yt import *
+yt = scripts.yt
 
 reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
