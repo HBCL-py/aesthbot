@@ -278,7 +278,7 @@ The quick brown fox jumps over the lazy dog."""
         x = randint(0,29)
         a = a[x]
         if "i.redd.it" not in a.url or "instagram.com" not in a.url or "imgur.com" not in a.url:
-            await message.channel.send("**"+str(a.title)+"** (<"+a.shortlink+">)\nScore: "+str(a.score)+"\nUploaded by /u/"+str(a.author)+"\n["+a.url+"]\n______________________\n"+str(a.selftext)")
+            await message.channel.send("**"+str(a.title)+"** (<"+a.shortlink+">)\nScore: "+str(a.score)+"\nUploaded by /u/"+str(a.author)+"\n["+a.url+"]\n______________________\n"+str(a.selftext))
         else:
             e = discord.Embed(title=str(a.title),
                           url=str(a.shortlink),
