@@ -281,7 +281,8 @@ The quick brown fox jumps over the lazy dog."""
                           url=str(a.shortlink),
                           description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext),
                           color=discord.Colour.purple())
-        e.set_image(url=a.url)
+        if a.url.endswith((".gif",".png",".jpg",".jpeg")):
+            e.set_image(url=a.url)
         print(a.url)
         e.set_footer(text="/r/"+sr[y])
         await message.channel.send(embed = e)
