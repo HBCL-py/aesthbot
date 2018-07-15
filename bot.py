@@ -285,6 +285,7 @@ The quick brown fox jumps over the lazy dog."""
                           description="Score: "+str(a.score)+"\nUploaded by /u/"+str(a.author),
                           color=discord.Colour.purple())
             e.set_image(url=a.url)
+            print(a.url)
             e.set_footer(text="r/"+sr[y])
             await message.channel.send(embed = e)
     
