@@ -5,6 +5,7 @@ import time
 from discord.ext import commands
 import asyncio
 import praw
+import prawcore
 
 reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
@@ -278,7 +279,7 @@ The quick brown fox jumps over the lazy dog."""
             try:
                 for submission in reddit.subreddit(sr).hot(limit=50):
                     a.append(submission)
-            except praw.prawcore.exceptions.BadRequest:
+            except prawcore.exceptions.BadRequest:
                 await message.channel.send("ERROR: An exception has occured. Please make sure you've given a correct subreddit id (use the name given in the link; /r/<subreddit>).")
                 return
             x = randint(0,49)
