@@ -24,7 +24,7 @@ owners = [264195450859552779, 403557634998796288]
 @bot.event
 async def on_ready():
     print('Logged in as {0.user}'.format(bot))
-    print("Created by HBell_CL.py#5144 and Alexei Стуков#1672")
+    print("Created by HBell_CL.py#5144 and Alexei Стуков#1672~")
     print("Using discord.py v"+discord.__version__)
     print("__________________________________________________________________________")
 
