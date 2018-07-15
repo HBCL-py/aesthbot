@@ -277,13 +277,16 @@ The quick brown fox jumps over the lazy dog."""
             a.append(submission)
         x = randint(0,29)
         a = a[x]
-        e = discord.Embed(title=str(a.title),
+        if "youtube.com" in a.url or "youtu.be" in a.url:
+            await message.channel.send("**"+str(a.title)+"** (<"+a.shortlink+">)\nScore: "+str(a.score)+"\nUploaded by /u/"+str(a.author)+"\n["+a.url+"]")
+        else:
+            e = discord.Embed(title=str(a.title),
                           url=str(a.shortlink),
                           description="Score: "+str(a.score)+"\nUploaded by /u/"+str(a.author),
                           color=discord.Colour.purple())
-        e.set_image(url=a.url)
-        e.set_footer(text="r/"+sr[y])
-        await message.channel.send(embed = e)
+            e.set_image(url=a.url)
+            e.set_footer(text="r/"+sr[y])
+            await message.channel.send(embed = e)
     
     if message.content.startswith("~help"):
         e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
