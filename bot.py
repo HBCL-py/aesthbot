@@ -270,25 +270,20 @@ The quick brown fox jumps over the lazy dog."""
                 c += 1
     
     if message.content.startswith("~reddit"):
-        sr = ['vaporwaveart','vaporwaveaesthetics','vaporwave']
-        y = randint(0,2)
+        sr = ['vaporwaveart','vaporwaveaesthetics']
+        y = randint(0,1)
         a = []
-        for submission in reddit.subreddit(sr[y]).hot(limit=30):
+        for submission in reddit.subreddit(sr[y]).hot(limit=50):
             a.append(submission)
-        x = randint(0,29)
+        x = randint(0,49)
         a = a[x]
-        if "i.redd.it" not in a.url or "instagram.com" not in a.url or "imgur.com" not in a.url:
-            await message.channel.send("**"+str(a.title)+"** (<"+a.shortlink+">)\nScore: "+str(a.score)+"\nUploaded by /u/"+str(a.author)+" to /r/"+sr[y]+"\n["+a.url+"]\n______________________\n"+str(a.selftext))
-        else:
-            e = discord.Embed(title=str(a.title),
+        e = discord.Embed(title=str(a.title),
                           url=str(a.shortlink),
                           description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext),
                           color=discord.Colour.purple())
-            e.set_image(url=a.url)
-            print(a.url)
-            print(e.image.url)
-            e.set_footer(text="/r/"+sr[y])
-            await message.channel.send(embed = e)
+        e.set_image(url=a.url)
+        e.set_footer(text="/r/"+sr[y])
+        await message.channel.send(embed = e)
     
     if message.content.startswith("~help"):
         e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
@@ -299,7 +294,7 @@ The quick brown fox jumps over the lazy dog."""
 **~aesth** *(text)* => Turns given text (from the english alphabet, that is) into a simple aesthetic font. If no text is present, it shows two sample pangrams.
 **~echo** *<text>* => Repeats text given by the user.
 **~aesnick** => Turns any normal font part (from the english alphabet, that is) from your name to a simple aesthetic font and turns it into your nickname. The bot must have a higher role than you for it to work, and manage nicknames permissions too!
-**~reddit** => Takes a random post from the hot section of 3 subreddits.
+**~reddit** => Takes a random post from the hot section of either /r/vaporwaveart or /r/vaporwaveaesthetics.
 **=======BOT OWNER ONLY COMMANDS=======**
 **~night** => Shuts down the bot.
 **~gameset** *<text>* => Sets the playing status of the bot.
