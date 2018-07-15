@@ -284,6 +284,20 @@ The quick brown fox jumps over the lazy dog."""
             e.set_image(url=a.url)
             z = ""
         else:
+            if a.url.startswith("https://youtu.be"):
+                yt = a.url.split(".")
+                print(yt)
+                yt.pop(0)
+                print(yt)
+                yt = yt[0]
+                print(yt)
+                yt = yt.split("/")
+                print(yt)
+                yt.pop(0)
+                print(yt)
+                yt = yt[0]
+                print(yt)
+                e.set_image("http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
             z = "\nContent URL: "+a.url
         e.description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext)+z
         print(a.url)
