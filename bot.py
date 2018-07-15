@@ -278,7 +278,7 @@ The quick brown fox jumps over the lazy dog."""
         x = randint(0,29)
         a = a[x]
         if "i.redd.it" not in a.url or "instagram.com" not in a.url or "imgur.com" not in a.url:
-            await message.channel.send("**"+str(a.title)+"** (<"+a.shortlink+">)\nScore: "+str(a.score)+"\nUploaded by /u/"+str(a.author)+"\n["+a.url+"]\n______________________\n"+str(a.selftext))
+            await message.channel.send("**"+str(a.title)+"** (<"+a.shortlink+">)\nScore: "+str(a.score)+"\nUploaded by /u/"+str(a.author)+" to /r/"+sr[y]+"\n["+a.url+"]\n______________________\n"+str(a.selftext))
         else:
             e = discord.Embed(title=str(a.title),
                           url=str(a.shortlink),
@@ -287,7 +287,7 @@ The quick brown fox jumps over the lazy dog."""
             e.set_image(url=a.url)
             print(a.url)
             print(e.image.url)
-            e.set_footer(text="r/"+sr[y])
+            e.set_footer(text="/r/"+sr[y])
             await message.channel.send(embed = e)
     
     if message.content.startswith("~help"):
