@@ -279,10 +279,13 @@ The quick brown fox jumps over the lazy dog."""
         a = a[x]
         e = discord.Embed(title=str(a.title),
                           url=str(a.shortlink),
-                          description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext),
                           color=discord.Colour.purple())
-        if a.url.endswith((".gif",".png",".jpg",".jpeg")):
+        if a.url.endswith((".gif",".png",".jpg",".jpeg",".gifv")):
             e.set_image(url=a.url)
+            z = ""
+        else:
+            z = "\nContent URL: "+a.url
+        e.description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext)+z
         print(a.url)
         e.set_footer(text="/r/"+sr[y])
         await message.channel.send(embed = e)
