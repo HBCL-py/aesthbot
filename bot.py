@@ -286,12 +286,14 @@ The quick brown fox jumps over the lazy dog."""
         else:
             if a.url.startswith("https://youtu.be"):
                 yt = a.url.split(".")
-                print(yt)
                 yt.pop(0)
-                print(yt)
                 yt = yt[0]
-                print(yt)
                 yt = yt.split("/")
+                yt.pop(0)
+                yt = yt[0]
+                e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
+            elif a.url.startswith("https://www.youtube.com"):
+                yt = a.url.split("=")
                 print(yt)
                 yt.pop(0)
                 print(yt)
