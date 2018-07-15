@@ -277,12 +277,12 @@ The quick brown fox jumps over the lazy dog."""
             a.append(submission)
         x = randint(0,29)
         a = a[x]
-        if "youtube.com" in a.url or "youtu.be" in a.url:
-            await message.channel.send("**"+str(a.title)+"** (<"+a.shortlink+">)\nScore: "+str(a.score)+"\nUploaded by /u/"+str(a.author)+"\n["+a.url+"]")
+        if "i.redd.it" not in a.url or "instagram.com" not in a.url or "imgur.com" not in a.url:
+            await message.channel.send("**"+str(a.title)+"** (<"+a.shortlink+">)\nScore: "+str(a.score)+"\nUploaded by /u/"+str(a.author)+"\n["+a.url+"]\n______________________\n"+str(a.selftext)")
         else:
             e = discord.Embed(title=str(a.title),
                           url=str(a.shortlink),
-                          description="Score: "+str(a.score)+"\nUploaded by /u/"+str(a.author),
+                          description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext),
                           color=discord.Colour.purple())
             e.set_image(url=a.url)
             print(a.url)
