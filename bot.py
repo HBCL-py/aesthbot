@@ -275,8 +275,12 @@ The quick brown fox jumps over the lazy dog."""
             msg.pop(0)
             sr = msg[0]
             a = []
-            for submission in reddit.subreddit(sr).hot(limit=50):
-                a.append(submission)
+            try:
+                for submission in reddit.subreddit(sr).hot(limit=50):
+                    a.append(submission)
+            except prawcore.exceptions.BadRequest:
+                await message.channel.send("ERROR: An exception has occured. Please make sure you've given a correct subreddit id (use the name given in the link; /r/<subreddit>).")
+                return
             x = randint(0,49)
             a = a[x]
             e = discord.Embed(title=str(a.title),
