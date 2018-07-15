@@ -270,41 +270,42 @@ The quick brown fox jumps over the lazy dog."""
                 c += 1
     
     if message.content.startswith("~reddit"):
-        sr = ['vaporwaveart','vaporwaveaesthetics']
-        y = randint(0,1)
-        a = []
-        for submission in reddit.subreddit(sr[y]).hot(limit=50):
-            a.append(submission)
-        x = randint(0,49)
-        a = a[x]
-        e = discord.Embed(title=str(a.title),
-                          url=str(a.shortlink),
-                          color=discord.Colour.purple())
-        if a.url.endswith((".gif",".png",".jpg",".jpeg",".gifv")):
-            e.set_image(url=a.url)
-            z = ""
+        if len(message.content) > 7:
+            msg = message.content.split(' ')
+            msg.pop(0)
+            sr = msg[0]
+            a = []
+            for submission in reddit.subreddit(sr).hot(limit=50):
+                a.append(submission)
+            x = randint(0,49)
+            a = a[x]
+            e = discord.Embed(title=str(a.title),
+                              url=str(a.shortlink),
+                              color=discord.Colour.purple())
+            if a.url.endswith((".gif",".png",".jpg",".jpeg",".gifv")):
+                e.set_image(url=a.url)
+                z = ""
+            else:
+                if a.url.startswith("https://youtu.be"):
+                    yt = a.url.split(".")
+                    yt.pop(0)
+                    yt = yt[0]
+                    yt = yt.split("/")
+                    yt.pop(0)
+                    yt = yt[0]
+                    e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
+                elif a.url.startswith("https://www.youtube.com"):
+                    yt = a.url.split("=")
+                    yt.pop(0)
+                    yt = yt[0]
+                    e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
+                z = "\nContent URL: "+a.url
+            e.description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext)+z
+            print(a.url)
+            e.set_footer(text="/r/"+sr)
+            await message.channel.send(embed = e)
         else:
-            if a.url.startswith("https://youtu.be"):
-                yt = a.url.split(".")
-                yt.pop(0)
-                yt = yt[0]
-                yt = yt.split("/")
-                yt.pop(0)
-                yt = yt[0]
-                e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
-            elif a.url.startswith("https://www.youtube.com"):
-                yt = a.url.split("=")
-                print(yt)
-                yt.pop(0)
-                print(yt)
-                yt = yt[0]
-                print(yt)
-                e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
-            z = "\nContent URL: "+a.url
-        e.description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext)+z
-        print(a.url)
-        e.set_footer(text="/r/"+sr[y])
-        await message.channel.send(embed = e)
+            await message.channel.send("Please give a subreddit!")
     
     if message.content.startswith("~help"):
         e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
@@ -315,7 +316,7 @@ The quick brown fox jumps over the lazy dog."""
 **~aesth** *(text)* => Turns given text (from the english alphabet, that is) into a simple aesthetic font. If no text is present, it shows two sample pangrams.
 **~echo** *<text>* => Repeats text given by the user.
 **~aesnick** => Turns any normal font part (from the english alphabet, that is) from your name to a simple aesthetic font and turns it into your nickname. The bot must have a higher role than you for it to work, and manage nicknames permissions too!
-**~reddit** => Takes a random post from the hot section of either /r/vaporwaveart or /r/vaporwaveaesthetics.
+**~reddit** => Takes a random post from the hot section of a given subreddit. If more than one subreddit is given, then it will take only the first one.
 **=======BOT OWNER ONLY COMMANDS=======**
 **~night** => Shuts down the bot.
 **~gameset** *<text>* => Sets the playing status of the bot.
