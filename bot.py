@@ -8,6 +8,9 @@ import praw
 import prawcore
 from scripts.yt import *
 
+bot = commands.Bot(command_prefix='~')
+bot.remove_command("help")
+bot.self_bot = False
 
 reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
@@ -18,12 +21,11 @@ if reddit.read_only:
 else:
     print("The Reddit instance is in AUTHORIZED mode.")
 
-bot = discord.Client()
 owners = [264195450859552779, 403557634998796288]
 
 @bot.event
 async def on_ready():
-    print('Logged in as {0.user}'.format(bot))
+    print('Logged in as {0.user}'.format(bot.user))
     print("Created by HBell_CL.py#5144 and Alexei Стуков#1672~")
     print("Using discord.py v"+discord.__version__)
     print("__________________________________________________________________________")
@@ -51,19 +53,7 @@ async def on_member_ban(server,member):
     
 @bot.event
 async def on_message(message):
-    if message.author == bot.user:
-        return
 
-    if message.content.startswith('~botinfo'):
-        e = discord.Embed(title="**BOT INFO**",
-description="""**Owners:** HBell_CL.py#5144 and Alexei Стуков#1672 =^.^=
-[<:furryfren2:463616355900588062>][<:lopez:456587657837936642>]
-**The bot was created** at """+str(bot.user.created_at)+"""~
-**The bot is present** in """+str(len(bot.guilds))+" server(s)~")
-        
-        e.set_thumbnail(url=bot.user.avatar_url)
-        e.set_footer(text="La weá weón fsdfdslkñsfls.")
-        await message.channel.send(embed=e)
 
     if message.content.startswith('~servinfo'):
         if len(message.content) > 10 and message.author.id in owners:
@@ -336,6 +326,9 @@ The quick brown fox jumps over the lazy dog."""
 **~aesnick** => Turns any normal font part (from the english alphabet, that is) from your name to a simple aesthetic font and turns it into your nickname. The bot must have a higher role than you for it to work, and manage nicknames permissions too!
 **~reddit** => Takes a random post from the hot section of a given subreddit. If more than one subreddit is given, then it will take only the first one.
 **~yt** *<query>* => Takes the first result from YT search.
+**~lewd *<subcommand>* *<query>* => Takes a random result from the first page of two sites:
+      *** e621.net (subcommand esix)
+      *** rule34.xxx (subcommand r34)
 **=======BOT OWNER ONLY COMMANDS=======**
 **~night** => Shuts down the bot.
 **~gameset** *<text>* => Sets the playing status of the bot.
@@ -344,7 +337,17 @@ The quick brown fox jumps over the lazy dog."""
                           color=discord.Colour(0xff0204))
         await message.channel.send(embed=e)
 
-
+@bot.command()
+async def botinfo(pass_context=True):
+    e = discord.Embed(title="**BOT INFO**",
+                          description="""**Owners:** HBell_CL.py#5144 and Alexei Стуков#1672 =^.^=
+[<:furryfren2:463616355900588062>][<:lopez:456587657837936642>]
+**The bot was created** at """+str(bot.user.created_at)+"""~
+**The bot is present** in """+str(len(bot.guilds))+" server(s)~")
+        
+    e.set_thumbnail(url=bot.user.avatar_url)
+    e.set_footer(text="La weá weón fsdfdslkñsfls.")        
+    await ctx.send(embed=e)
 
 
 
