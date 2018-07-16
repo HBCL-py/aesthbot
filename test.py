@@ -41,8 +41,8 @@ async def servinfo(id: int):
     e.set_thumbnail(url=g.icon_url)
     e.set_author(name="^_^")
     e.set_footer(text="Command requested by "+str(message.author)+".")
-    await message.channel.send("==============================================")
+    await message.channel.send("===============================================")
     await message.channel.send(embed=e)
-    await message.channel.send("==============================================")
+    await message.channel.send("===============================================")
 
 bot.run(os.environ['BOT_TOKEN'])
