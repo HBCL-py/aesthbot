@@ -30,7 +30,10 @@ async def botinfo(ctx):
     
 @bot.command(pass_context = True)
 async def servinfo(ctx, id: int):
-    g = bot.get_guild(id)
+    try:
+        g = bot.get_guild(id)
+    except discord.ext.commands.errors.MissingRequiredArgument:
+        g = ctx.guild
     if g.mfa_level == 1:
         a = "The server requires 2FA for administration."
     else:
