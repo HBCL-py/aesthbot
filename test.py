@@ -30,20 +30,19 @@ async def botinfo(ctx):
     
 @bot.command()
 async def servinfo(id: int):
-    try:
-        g = get_guild(id)
-        if g.mfa_level == 1:
-            a = "The server requires 2FA for administration."
-        else:
-            a = "The server doesn't require 2FA for administration."
-        e = discord.Embed(title = "SERVER INFO",
-                          color = discord.Colour(0x00ff00),
-                          description = "**Server name is** "+str(g.name)+".\n\n**Created at:** "+str(g.created_at)+" UTC.\n\n**Server ID is** "+str(g.id)+"~\n\n**Server owner is** "+str(g.owner)+"~\n\n"+a+"\n\nThere are "+str(g.member_count)+" members.")
-        e.set_thumbnail(url=g.icon_url)
-        e.set_author(name="^_^")
-        e.set_footer(text="Command requested by "+str(message.author)+".")
-        await message.channel.send("==============================================")
-        await message.channel.send(embed=e)
-        await message.channel.send("==============================================")
+    g = get_guild(id)
+    if g.mfa_level == 1:
+        a = "The server requires 2FA for administration."
+    else:
+        a = "The server doesn't require 2FA for administration."
+    e = discord.Embed(title = "SERVER INFO",
+                      color = discord.Colour(0x00ff00),
+                      description = "**Server name is** "+str(g.name)+".\n\n**Created at:** "+str(g.created_at)+" UTC.\n\n**Server ID is** "+str(g.id)+"~\n\n**Server owner is** "+str(g.owner)+"~\n\n"+a+"\n\nThere are "+str(g.member_count)+" members.")
+    e.set_thumbnail(url=g.icon_url)
+    e.set_author(name="^_^")
+    e.set_footer(text="Command requested by "+str(message.author)+".")
+    await message.channel.send("==============================================")
+    await message.channel.send(embed=e)
+    await message.channel.send("==============================================")
     
 bot.run(os.environ['BOT_TOKEN'])
