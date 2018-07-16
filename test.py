@@ -44,5 +44,5 @@ async def servinfo(id: int):
     await message.channel.send("==============================================")
     await message.channel.send(embed=e)
     await message.channel.send("==============================================")
-    
+
 bot.run(os.environ['BOT_TOKEN'])
