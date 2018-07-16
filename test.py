@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix='~')
 
 @bot.event
 async def on_ready():
-    print('Logged in as {0}'.format(bot.user.name))
+    print('Logged in as {0}'.format(bot.user))
     print("Created by HBell_CL.py#5144 and Alexei Стуков#1672~")
     print("Using discord.py v"+discord.__version__)
     print("__________________________________________________________________________")
