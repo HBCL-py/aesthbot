@@ -26,10 +26,10 @@ async def botinfo(ctx):
 **The bot is present** in """+str(len(bot.guilds))+" server(s)~")
     e.set_thumbnail(url=bot.user.avatar_url)
     e.set_footer(text="La weá weón fsdfdslkñsfls.")        
-    await bot.say(embed=e)
+    await ctx.send(embed=e)
     
-@bot.command()
-async def servinfo(id: int):
+@bot.command(pass_context = True)
+async def servinfo(ctx, id: int):
     g = bot.get_guild(id)
     if g.mfa_level == 1:
         a = "The server requires 2FA for administration."
@@ -41,8 +41,8 @@ async def servinfo(id: int):
     e.set_thumbnail(url=g.icon_url)
     e.set_author(name="^_^")
     e.set_footer(text="Command requested by "+str(message.author)+".")
-    await bot.say("===============================================")
-    await bot.say(embed=e)
-    await bot.say("===============================================")
+    await ctx.send("===============================================")
+    await ctx.send(embed=e)
+    await ctx.send("===============================================")
 
 bot.run(os.environ['BOT_TOKEN'])
