@@ -17,7 +17,11 @@ async def on_ready():
     print("Using discord.py v"+discord.__version__)
     print("__________________________________________________________________________")
     
-@bot.command(pass_context = True)
+@bot.event
+async def on_message():
+    ctx = message.channel
+    
+@bot.command()
 async def botinfo(ctx):
     e = discord.Embed(title="**BOT INFO**",
                       description="""**Owners:** HBell_CL.py#5144 and Alexei Стуков#1672 =^.^=
@@ -27,9 +31,9 @@ async def botinfo(ctx):
     e.set_thumbnail(url=bot.user.avatar_url)
     e.set_footer(text="La weá weón fsdfdslkñsfls.")        
     await ctx.send(embed=e)
-    
-@bot.command(pass_context = True)
-async def servinfo(ctx, id: int = message.guild.id):
+
+@bot.command()
+async def servinfo(ctx, id: int = ctx.guild.id):
     g = bot.get_guild(id)
     if g.mfa_level == 1:
         a = "The server requires 2FA for administration."
