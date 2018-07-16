@@ -30,7 +30,7 @@ async def botinfo(ctx):
     
 @bot.command()
 async def servinfo(id: int):
-    g = get_guild(id)
+    g = bot.get_guild(id)
     if g.mfa_level == 1:
         a = "The server requires 2FA for administration."
     else:
@@ -41,8 +41,8 @@ async def servinfo(id: int):
     e.set_thumbnail(url=g.icon_url)
     e.set_author(name="^_^")
     e.set_footer(text="Command requested by "+str(message.author)+".")
-    await message.channel.send("===============================================")
-    await message.channel.send(embed=e)
-    await message.channel.send("===============================================")
+    await bot.say("===============================================")
+    await bot.say(embed=e)
+    await bot.say("===============================================")
 
 bot.run(os.environ['BOT_TOKEN'])
