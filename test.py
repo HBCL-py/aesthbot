@@ -43,7 +43,7 @@ async def servinfo(ctx, id: int = -1):
                       description = "**Server name is** "+str(g.name)+".\n\n**Created at:** "+str(g.created_at)+" UTC.\n\n**Server ID is** "+str(g.id)+"~\n\n**Server owner is** "+str(g.owner)+"~\n\n"+a+"\n\nThere are "+str(g.member_count)+" members.")
     e.set_thumbnail(url=g.icon_url)
     e.set_author(name="^_^")
-    e.set_footer(text="Command requested by "+str(message.author)+".")
+    e.set_footer(text="Command requested by "+str(ctx.author)+".")
     await ctx.send("===============================================")
     await ctx.send(embed=e)
     await ctx.send("===============================================")
