@@ -316,7 +316,7 @@ async def botinfo(ctx):
     await ctx.send(embed=e)
 
 @bot.command(pass_context = True)
-async def servinfo(ctx, id: int)
+async def servinfo(ctx, id: int):
     if g.mfa_level == 1:
         a = "The server requires 2FA for administration."
     else:
