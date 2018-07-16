@@ -6,3 +6,5 @@ chardet
 https://github.com/praw-dev/praw/archive/master.zip
 gdata
 atom
+esix
+rule34
