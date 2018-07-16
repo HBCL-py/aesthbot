@@ -10,7 +10,6 @@ from scripts.yt import *
 
 bot = commands.Bot(command_prefix='~')
 bot.remove_command("help")
-bot.self_bot = False
 
 reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
@@ -25,7 +24,7 @@ owners = [264195450859552779, 403557634998796288]
 
 @bot.event
 async def on_ready():
-    print('Logged in as {0.user}'.format(bot))
+    print('Logged in as {0}'.format(bot.user.name))
     print("Created by HBell_CL.py#5144 and Alexei Стуков#1672~")
     print("Using discord.py v"+discord.__version__)
     print("__________________________________________________________________________")
@@ -53,39 +52,6 @@ async def on_member_ban(server,member):
     
 @bot.event
 async def on_message(message):
-
-
-    if message.content.startswith('~servinfo'):
-        if len(message.content) > 10 and message.author.id in owners:
-            msg = message.content.split(' ')
-            msg.pop(0)
-            if len(msg) > 1:
-                msg = msg[0]
-            msg = " ".join(msg)
-            try:
-                msg = int(msg)
-            except ValueError:
-                await message.channel.send("Please input a valid ID")
-                return
-            g = bot.get_guild(msg)
-            if g == None:
-                await message.channel.send("This server either doesn't exist, or I'm not present in it.")
-                return
-        else:
-            g = message.guild
-        if g.mfa_level == 1:
-            a = "The server requires 2FA for administration."
-        else:
-            a = "The server doesn't require 2FA for administration."
-        e = discord.Embed(title = "SERVER INFO",
-                          color = discord.Colour(0x00ff00),
-                          description = "**Server name is** "+str(g.name)+".\n\n**Created at:** "+str(g.created_at)+" UTC.\n\n**Server ID is** "+str(g.id)+"~\n\n**Server owner is** "+str(g.owner)+"~\n\n"+a+"\n\nThere are "+str(g.member_count)+" members.")
-        e.set_thumbnail(url=g.icon_url)
-        e.set_author(name="^_^")
-        e.set_footer(text="Command requested by "+str(message.author)+".")
-        await message.channel.send("==============================================")
-        await message.channel.send(embed=e)
-        await message.channel.send("==============================================")
     
     if message.content.startswith('~ping'):
         i = randint(1,5)
@@ -337,8 +303,8 @@ The quick brown fox jumps over the lazy dog."""
                           color=discord.Colour(0xff0204))
         await message.channel.send(embed=e)
 
-@bot.command()
-async def botinfo(pass_context=True):
+@bot.command(pass_context = True)
+async def botinfo(ctx):
     e = discord.Embed(title="**BOT INFO**",
                           description="""**Owners:** HBell_CL.py#5144 and Alexei Стуков#1672 =^.^=
 [<:furryfren2:463616355900588062>][<:lopez:456587657837936642>]
@@ -349,7 +315,21 @@ async def botinfo(pass_context=True):
     e.set_footer(text="La weá weón fsdfdslkñsfls.")        
     await ctx.send(embed=e)
 
-
+@bot.command(pass_context = True)
+async def servinfo(ctx, id: int)
+    if g.mfa_level == 1:
+        a = "The server requires 2FA for administration."
+    else:
+        a = "The server doesn't require 2FA for administration."
+    e = discord.Embed(title = "SERVER INFO",
+                      color = discord.Colour(0x00ff00),
+                      description = "**Server name is** "+str(g.name)+".\n\n**Created at:** "+str(g.created_at)+" UTC.\n\n**Server ID is** "+str(g.id)+"~\n\n**Server owner is** "+str(g.owner)+"~\n\n"+a+"\n\nThere are "+str(g.member_count)+" members.")
+    e.set_thumbnail(url=g.icon_url)
+    e.set_author(name="^_^")
+    e.set_footer(text="Command requested by "+str(message.author)+".")
+    await message.channel.send("==============================================")
+    await message.channel.send(embed=e)
+    await message.channel.send("==============================================")
 
 
 
