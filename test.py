@@ -296,7 +296,7 @@ async def yt(ctx, *, msg = None):
 @bot.group(pass_context=True)
 async def lewd(ctx):
     if ctx.invoked_subcommand is None:
-        await bot.say('''Invalid subcommand passed...
+        await ctx.send('''Invalid subcommand passed...
 Usage:
     `~lewd [esix|r34] <query>`''')
     
