@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix='~')
 
 reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
-                     user_agent="aesthbot-discordbot[python] v1.3 (by /u/thehellbell)")
+                     user_agent="aesthbot-discordbot[python] v1.4.5 (by /u/thehellbell)")
 
 if reddit.read_only:
     print("The Reddit instance is in READ ONLY mode.")
@@ -259,25 +259,25 @@ async def reddit(ctx, msg=None):
     if a.url.endswith((".gif",".png",".jpg",".jpeg",".gifv")):
         e.set_image(url=a.url)
         z = ""
-        else:
-            if a.url.startswith("https://youtu.be"):
-                yt = a.url.split(".")
-                yt.pop(0)
-                yt = yt[0]
-                yt = yt.split("/")
-                yt.pop(0)
-                yt = yt[0]
-                e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
-            elif a.url.startswith("https://www.youtube.com"):
-                yt = a.url.split("=")
-                yt.pop(0)
-                yt = yt[0]
-                e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
-            z = "\nContent URL: "+a.url
-        e.description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext)+z
-        print(a.url)
-        e.set_footer(text="/r/"+sr)
-        await message.channel.send(embed = e)
+    else:
+        if a.url.startswith("https://youtu.be"):
+            yt = a.url.split(".")
+            yt.pop(0)
+            yt = yt[0]
+            yt = yt.split("/")
+            yt.pop(0)
+            yt = yt[0]
+            e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
+        elif a.url.startswith("https://www.youtube.com"):
+            yt = a.url.split("=")
+            yt.pop(0)
+            yt = yt[0]
+            e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
+        z = "\nContent URL: "+a.url
+    e.description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext)+z
+    print(a.url)
+    e.set_footer(text="/r/"+sr)
+    await message.channel.send(embed = e)
         
         
         
