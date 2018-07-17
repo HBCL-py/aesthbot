@@ -29,12 +29,12 @@ async def botinfo(ctx):
     await ctx.send(embed=e)
 
 @bot.command(pass_context = True)
-async def servinfo(ctx, id = -1):
+async def servinfo(ctx, id = None):
+    if id == None:
+        g = ctx.guild
     if type(id) != int:
         await ctx.send("Please input a valid ID.")
         return
-    if id == -1:
-        g = ctx.guild
     else:
         g = bot.get_guild(id)
         if g == None:
