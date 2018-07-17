@@ -225,7 +225,7 @@ async def userinfo(ctx, *, msg = None):
                                   description="**Username#ID:** "+name+"#"+disc+"\n\n**User ID:** "+str(uid)+"\n\n**Guild Nickname:** "+nick+"\n\n**UTC Creation Time:** "+str(time)+"\n\n**UTC Guild joined at:** "+str(join)+"\n\n**Is the user in this server?** "+r)
             embed.set_thumbnail(url=avatar)
             embed.set_author(name="^_^")
-            embed.set_footer(text="Command requested by "+str(message.author)+".")
+            embed.set_footer(text="Command requested by "+str(ctx.author)+".")
             await ctx.send("#############################")
             await ctx.send(embed=embed)
             await ctx.send("#############################")
