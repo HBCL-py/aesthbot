@@ -120,7 +120,7 @@ async def night(ctx):
         await ctx.send("ERROR: Owner-only command.")
     
 @bot.command(pass_context = True)
-async def aesth(ctx, msg = None)
+async def aesth(ctx, msg = None):
     if msg == None:
         msg = """El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el saxofón detrás del palenque de paja.
 The quick brown fox jumps over the lazy dog."""
