@@ -7,8 +7,6 @@ import asyncio
 import praw
 import prawcore
 from scripts.yt import *
-import esix as furry
-import rule34
 
 endurl = (".gif",".png",".jpg",".jpeg",".gifv")
 
@@ -292,37 +290,6 @@ async def yt(ctx, *, msg = None):
     l = ytsearch(msg)
     l = l[0]
     await ctx.send("http://www.youtube.com/watch?v="+l)
-    
-@bot.group(pass_context=True)
-async def lewd(ctx):
-    if ctx.invoked_subcommand is None:
-        await ctx.send('''Invalid subcommand passed...
-Usage:
-    `~lewd [esix|r34] <query>`''')
-    
-@lewd.command(pass_context=True)
-async def esix(ctx, *, query=None):
-    a = []
-    for post in furry.post.search(query, limit=75):
-        a.append(post)
-    x = randint(0, (len(a)-1))
-    a = a[x]
-    t = []
-    for tag in a.tags:
-        if tag.type == "artist":
-            t.append(tag.name)
-    t = ",".join(t)
-    e = discord.Embed(title="#"+a.id+" - Score:"+p.score,
-                      description=p.description+"""
-Rating: """+p.rating.upper()+"""
-URL: """+p.url+"""
-Artist(s): """+t,
-                      color = 0x035096,
-                      url = a.url)
-    if p.file_url.endswith(endurl):
-        e.set_image(url=a.file_url)
-    else:
-        e.set_footer("File URL: "+a.file_url)
         
     
 @bot.command(pass_context=True)    
@@ -337,9 +304,6 @@ async def help(ctx):
 **~aesnick** => Turns any normal font part (from the english alphabet, that is) from your name to a simple aesthetic font and turns it into your nickname. The bot must have a higher role than you for it to work, and manage nicknames permissions too!
 **~reddit** => Takes a random post from the hot section of a given subreddit. If more than one subreddit is given, then it will take only the first one.
 **~yt** *<query>* => Takes the first result from YT search.
-**~lewd** *<subcommand>* *<query>* => Takes a random result from the first page of two sites:
-      *** e621.net (subcommand **esix**)
-      *** rule34.xxx (subcommand **r34**)
 **=======BOT OWNER ONLY COMMANDS=======**
 **~night** => Shuts down the bot.
 **~gameset** *<text>* => Sets the playing status of the bot.
