@@ -32,10 +32,12 @@ async def botinfo(ctx):
 async def servinfo(ctx, id = None):
     if id == None:
         id = ctx.guild.id
-    if type(id) != int:
-        await ctx.send("Please input a valid ID.")
-        return
     else:
+        try:
+            id = int(id)
+        except ValueError:
+            await ctx.send("Please input a valid ID.")
+            return
         g = bot.get_guild(id)
         if g == None:
             await ctx.send("That server either doesn't exist, or I'm not present on it.")
