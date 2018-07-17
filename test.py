@@ -175,11 +175,6 @@ async def usern(ctx, *, msg = None):
     else:
         await ctx.send("ERROR: Owner-only command.")
         
-        
-        
-        
-        
-
 @bot.command(pass_context = True)
 async def userinfo(ctx, *, msg = None):
     if len(ctx.message.mentions) < 2:
@@ -235,10 +230,53 @@ async def userinfo(ctx, *, msg = None):
     else:
         await ctx.send("Ping less than 2 people only!")
         
+@bot.commands(pass_context=True)        
+async def servers(ctx):
+    if ctx.author.id in owners:
+        c = 1
+        for server in bot.guilds:
+            await ctx.send(str(c)+".-) "+str(server.name)+"; ID = "+str(server.id)+"~")
+            c += 1        
         
-        
-        
-        
+@bot.commands(pass_context=True)
+async def reddit(ctx, msg=None):
+    if msg == None:
+        await ctx.send("Please give a subreddit!")
+    sr = msg
+    a = []
+    try:
+        for submission in reddit.subreddit(sr).hot(limit=50):
+        a.append(submission)
+    except prawcore.exceptions.BadRequest:
+        await ctx.send("ERROR: An exception has occured. Please make sure you've given a correct subreddit id (use the name given in the link; /r/<subreddit>).")
+        return
+    x = randint(0,49)
+    a = a[x]
+    e = discord.Embed(title=str(a.title),
+                      url=str(a.shortlink),
+                      color=discord.Colour.purple())
+    if a.url.endswith((".gif",".png",".jpg",".jpeg",".gifv")):
+        e.set_image(url=a.url)
+        z = ""
+        else:
+            if a.url.startswith("https://youtu.be"):
+                yt = a.url.split(".")
+                yt.pop(0)
+                yt = yt[0]
+                yt = yt.split("/")
+                yt.pop(0)
+                yt = yt[0]
+                e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
+            elif a.url.startswith("https://www.youtube.com"):
+                yt = a.url.split("=")
+                yt.pop(0)
+                yt = yt[0]
+                e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
+            z = "\nContent URL: "+a.url
+        e.description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext)+z
+        print(a.url)
+        e.set_footer(text="/r/"+sr)
+        await message.channel.send(embed = e)
         
         
         
