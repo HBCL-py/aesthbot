@@ -242,6 +242,7 @@ async def servers(ctx):
 async def reddit(ctx, msg=None):
     if msg == None:
         await ctx.send("Please give a subreddit!")
+        return
     sr = msg
     a = []
     try:
