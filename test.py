@@ -188,7 +188,7 @@ async def userinfo(ctx, *, msg = None):
             j = True
         else:
             if msg == None:
-                msg = ctx.author
+                msg = ctx.author.id
                 j = True
             try:
                 msg = int(msg)
