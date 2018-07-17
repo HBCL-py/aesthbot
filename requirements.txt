@@ -4,8 +4,3 @@ aiohttp
 websockets
 chardet
 https://github.com/praw-dev/praw/archive/master.zip
-gdata
-atom
-rule34
-esix
-requests
