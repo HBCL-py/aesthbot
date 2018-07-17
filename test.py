@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix='~')
 
 reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
-                     user_agent="aesthbot-discordbot[python] v1.0.2 (by /u/thehellbell)")
+                     user_agent="aesthbot-discordbot[python] v1.3 (by /u/thehellbell)")
 
 if reddit.read_only:
     print("The Reddit instance is in READ ONLY mode.")
@@ -164,7 +164,7 @@ async def gameset(ctx, msg = None):
         await ctx.send("ERROR: Owner-only command.")
         
 @bot.command(pass_context = True)
-async def usern(ctx, msg = None):
+async def usern(ctx, *, msg = None):
     if ctx.author.id in owners:
         if msg == None:
             await ctx.send("Please give an input.")
