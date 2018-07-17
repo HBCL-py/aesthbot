@@ -123,7 +123,7 @@ async def night(ctx):
         await ctx.send("ERROR: Owner-only command.")
     
 @bot.command(pass_context = True)
-async def aesth(ctx, msg = None):
+async def aesth(ctx, *, msg = None):
     if msg == None:
         msg = """El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el saxofón detrás del palenque de paja.
 The quick brown fox jumps over the lazy dog."""
@@ -133,7 +133,7 @@ The quick brown fox jumps over the lazy dog."""
     await ctx.send(msg.translate(tran))
     
 @bot.command(pass_context=True)    
-async def echo(ctx, msg = None):
+async def echo(ctx, *, msg = None):
     if msg == None:
         await ctx.send("Please, input the message to echo.")
         return
@@ -155,7 +155,7 @@ async def aesnick(ctx):
         await ctx.send("ERROR: My privilege is too low...")
         
 @bot.command(pass_context = True)
-async def gameset(ctx, msg = None):
+async def gameset(ctx, *, msg = None):
     if ctx.author.id in owners:
         if msg == None:
             await ctx.send("Please give an input.")
@@ -263,7 +263,7 @@ async def reddit(ctx, msg=None):
         e.set_image(url=a.url)
         z = ""
     else:
-        if a.url.startswith("https://youtu.be"):
+        if a.url.startswith(("https://youtu.be","http://youtu.be")):
             yt = a.url.split(".")
             yt.pop(0)
             yt = yt[0]
@@ -271,7 +271,7 @@ async def reddit(ctx, msg=None):
             yt.pop(0)
             yt = yt[0]
             e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
-        if a.url.startswith("https://www.youtube.com"):
+        if a.url.startswith(("https://www.youtube.com","https://www.youtube.com")):
             yt = a.url.split("=")
             yt.pop(0)
             yt = yt[0]
