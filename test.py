@@ -9,6 +9,7 @@ import prawcore
 from scripts.yt import *
 
 bot = commands.Bot(command_prefix='~')
+bot.remove_command("help")
 
 rapi = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
