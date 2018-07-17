@@ -174,5 +174,73 @@ async def usern(ctx, *, msg = None):
         await ctx.send("Username set to: '"+msg+"'")
     else:
         await ctx.send("ERROR: Owner-only command.")
+        
+        
+        
+        
+        
+
+@bot.command(pass_context = True)
+async def userinfo(ctx, *, msg = None):
+    if len(ctx.message.mentions) < 2:
+        if len(ctx.message.mentions) == 1:
+            author = ctx.message.mentions[0]
+            j = True
+        else:
+            if msg == None:
+                msg = ctx.author
+                j = True
+            try:
+                msg = int(msg)
+            except ValueError:
+                await ctx.send("Please input a valid ID.")
+                return
+            author = ctx.guild.get_member(msg)
+            j = True
+            if author == None:
+                author = await bot.get_user_info(msg)
+                j = False
+        try:
+            name = author.name
+            uid = author.id
+            disc = author.discriminator
+            avatar = author.avatar_url
+            if avatar == None:
+                avatar = author.default_avatar_url
+            if j:
+                nick = author.display_name
+            else:
+                nick = "**-**"
+            time = author.created_at
+            if j:
+                join = author.joined_at
+            else:
+                join = "**-**"
+            if j:
+                r = "Yes :white_check_mark:"
+            else:
+                r = "No :x:"
+            embed = discord.Embed(title="USER INFO",
+                                  color=discord.Colour(0xff0bb7),
+                                  description="**Username#ID:** "+name+"#"+disc+"\n\n**User ID:** "+str(uid)+"\n\n**Guild Nickname:** "+nick+"\n\n**UTC Creation Time:** "+str(time)+"\n\n**UTC Guild joined at:** "+str(join)+"\n\n**Is the user in this server?** "+r)
+            embed.set_thumbnail(url=avatar)
+            embed.set_author(name="^_^")
+            embed.set_footer(text="Command requested by "+str(message.author)+".")
+            await ctx.send("#############################")
+            await ctx.send(embed=embed)
+            await ctx.send("#############################")
+            print(author)
+        except AttributeError:
+            await ctx.send("The inputted user is invalid.")
+    else:
+        await ctx.send("Ping less than 2 people only!")
+        
+        
+        
+        
+        
+        
+        
+        
     
 bot.run(os.environ['BOT_TOKEN'])
