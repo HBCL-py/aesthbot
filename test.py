@@ -7,7 +7,7 @@ import asyncio
 import praw
 import prawcore
 from scripts.yt import *
-import esto as furry
+import esix as furry
 import rule34
 
 endurl = (".gif",".png",".jpg",".jpeg",".gifv")
