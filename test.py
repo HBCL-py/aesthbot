@@ -10,7 +10,7 @@ from scripts.yt import *
 
 bot = commands.Bot(command_prefix='~')
 
-reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
+rapi = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
                      user_agent="aesthbot-discordbot[python] v1.4.5 (by /u/thehellbell)")
 
@@ -246,7 +246,7 @@ async def reddit(ctx, msg=None):
     sr = msg
     a = []
     try:
-        for submission in reddit.subreddit(sr).hot(limit=50):
+        for submission in rapi.subreddit(sr).hot(limit=50):
             a.append(submission)
     except prawcore.exceptions.BadRequest:
         await ctx.send("ERROR: An exception has occured. Please make sure you've given a correct subreddit id (use the name given in the link; /r/<subreddit>).")
