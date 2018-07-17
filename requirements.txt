@@ -7,4 +7,5 @@ https://github.com/praw-dev/praw/archive/master.zip
 gdata
 atom
 rule34
-yippi
+esix
+requests
