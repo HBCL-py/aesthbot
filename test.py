@@ -279,7 +279,35 @@ async def reddit(ctx, msg=None):
     e.set_footer(text="/r/"+sr)
     await ctx.send(embed = e)
         
-        
-        
+@bot.command(pass_context=True)
+async def yt(ctx, *, msg = None):
+    if msg == None:
+        await ctx.say("Please input the search query!")
+        return
+    l = ytsearch(msg)
+    l = l[0]
+    await ctx.send("http://www.youtube.com/watch?v="+l)
+    
+@bot.command(pass_context=True)    
+    e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
+**~botinfo** => Sends information about this bot.
+**~userinfo** *(id or mention)* => Sends information about a certain user; the author of the message if not specified.
+**~servinfo** *(id)* => Sends information about the server where the command was sent.
+**~ping** => For testing bot latency.
+**~aesth** *(text)* => Turns given text (from the english alphabet, that is) into a simple aesthetic font. If no text is present, it shows two sample pangrams.
+**~echo** *<text>* => Repeats text given by the user.
+**~aesnick** => Turns any normal font part (from the english alphabet, that is) from your name to a simple aesthetic font and turns it into your nickname. The bot must have a higher role than you for it to work, and manage nicknames permissions too!
+**~reddit** => Takes a random post from the hot section of a given subreddit. If more than one subreddit is given, then it will take only the first one.
+**~yt** *<query>* => Takes the first result from YT search.
+**~lewd *<subcommand>* *<query>* => Takes a random result from the first page of two sites:
+      *** e621.net (subcommand esix)
+      *** rule34.xxx (subcommand r34)
+**=======BOT OWNER ONLY COMMANDS=======**
+**~night** => Shuts down the bot.
+**~gameset** *<text>* => Sets the playing status of the bot.
+**~usern** *<text>* => Sets the username of the bot.
+**~servers** => Lists all the servers the bot is present in.""",
+                      color=discord.Colour(0xff0204))
+    await ctx.send(embed=e)
     
 bot.run(os.environ['BOT_TOKEN'])
