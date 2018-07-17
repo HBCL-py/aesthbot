@@ -129,4 +129,12 @@ The quick brown fox jumps over the lazy dog."""
     tran = str.maketrans(tab2, tab)
     await ctx.send(msg.translate(tran))
     
+@bot.command(pass_context=True)    
+async def echo(ctx, msg = None):
+    if msg == None:
+        ctx.send("Please, input the message to echo.")
+        return
+    await ctx.send(msg)
+    await ctx.message.delete()
+    
 bot.run(os.environ['BOT_TOKEN'])
