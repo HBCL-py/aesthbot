@@ -277,7 +277,7 @@ async def reddit(ctx, msg=None):
     e.description="**Score:** "+str(a.score)+"\n**Uploaded by** /u/"+str(a.author)+"\n______________________\n"+str(a.selftext)+z
     print(a.url)
     e.set_footer(text="/r/"+sr)
-    await message.channel.send(embed = e)
+    await ctx.send(embed = e)
         
         
         
