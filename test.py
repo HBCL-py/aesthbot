@@ -10,6 +10,17 @@ from scripts.yt import *
 
 bot = commands.Bot(command_prefix='~')
 
+reddit = praw.Reddit(client_id=os.environ['REDDIT_ID'],
+                     client_secret=os.environ['REDDIT_SECRET'],
+                     user_agent="aesthbot-discordbot[python] v1.0.2 (by /u/thehellbell)")
+
+if reddit.read_only:
+    print("The Reddit instance is in READ ONLY mode.")
+else:
+    print("The Reddit instance is in AUTHORIZED mode.")
+
+owners = [264195450859552779, 403557634998796288]
+
 @bot.event
 async def on_ready():
     print('Logged in as {0}'.format(bot.user))
@@ -90,5 +101,22 @@ async def ping(ctx):
         await ctx.send("Beep boop~ | "+str(round(bot.latency, 5))+"s")
     if i == 5:
         await ctx.send("In case of doubt, shout Bell out! | "+str(round(bot.latency, 5))+"s")
+        
+@bot.command(pass_context=True)
+async def night(ctx):
+    if ctx.author.id in owners:
+        print("SHUTDOWN STARTING...")
+        t = await ctx.send('Restarting... ')
+        for i in range(3):
+            await asyncio.sleep(0.75)
+            m = '.'*(i+1)
+            await t.edit(content=m)
+        await asyncio.sleep(1)
+        await t.edit(content='Ｇｏｏｄｂｙｅ．')
+        await asyncio.sleep(1)
+        await t.edit(content='ＺＺＺ．．．')
+        await bot.logout()
+    else:
+        await ctx.send("ERROR: Owner-only command.")
     
 bot.run(os.environ['BOT_TOKEN'])
