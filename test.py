@@ -152,7 +152,7 @@ async def aesnick(ctx):
         await ctx.send("ERROR: My privilege is too low...")
         
 @bot.command(pass_context = True)
-async def gameset(ctx, msg = None)
+async def gameset(ctx, msg = None):
     if ctx.author.id in owners:
         if msg == None:
             await ctx.send("Please give an input.")
@@ -164,7 +164,7 @@ async def gameset(ctx, msg = None)
         await ctx.send("ERROR: Owner-only command.")
         
 @bot.command(pass_context = True)
-async def usern(ctx, msg = None)
+async def usern(ctx, msg = None):
     if ctx.author.id in owners:
         if msg == None:
             await ctx.send("Please give an input.")
