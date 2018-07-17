@@ -14,7 +14,7 @@ rapi = praw.Reddit(client_id=os.environ['REDDIT_ID'],
                      client_secret=os.environ['REDDIT_SECRET'],
                      user_agent="aesthbot-discordbot[python] v1.4.5 (by /u/thehellbell)")
 
-if reddit.read_only:
+if rapi.read_only:
     print("The Reddit instance is in READ ONLY mode.")
 else:
     print("The Reddit instance is in AUTHORIZED mode.")
