@@ -80,15 +80,15 @@ async def servinfo(ctx, id = None):
 @bot.command(pass_context=True)
 async def ping(ctx):
     i = randint(1,5)
-        if i == 1:
-            await ctx.send("It's time to chew gum and kick ass... | "+str(round(bot.latency, 5))+"s")
-        if i == 2:
-            await ctx.send("Pong~ | "+str(round(bot.latency, 5))+"s")
-        if i == 3:
-            await ctx.send("A ping is a ping, you can't say it's only a half. | "+str(round(bot.latency, 5))+"s")
-        if i == 4:
-            await ctx.send("Beep boop~ | "+str(round(bot.latency, 5))+"s")
-        if i == 5:
-            await ctx.send("In case of doubt, shout Bell out! | "+str(round(bot.latency, 5))+"s")
+    if i == 1:
+        await ctx.send("It's time to chew gum and kick ass... | "+str(round(bot.latency, 5))+"s")
+    if i == 2:
+        await ctx.send("Pong~ | "+str(round(bot.latency, 5))+"s")
+    if i == 3:
+        await ctx.send("A ping is a ping, you can't say it's only a half. | "+str(round(bot.latency, 5))+"s")
+    if i == 4:
+        await ctx.send("Beep boop~ | "+str(round(bot.latency, 5))+"s")
+    if i == 5:
+        await ctx.send("In case of doubt, shout Bell out! | "+str(round(bot.latency, 5))+"s")
     
 bot.run(os.environ['BOT_TOKEN'])
