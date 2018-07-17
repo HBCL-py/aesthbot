@@ -29,11 +29,17 @@ async def botinfo(ctx):
     await ctx.send(embed=e)
 
 @bot.command(pass_context = True)
-async def servinfo(ctx, id: int = -1):
+async def servinfo(ctx, id = -1):
+    if type(id) != int:
+        await ctx.send("Please input a valid ID.")
+        return
     if id == -1:
         g = ctx.guild
     else:
         g = bot.get_guild(id)
+        if g == None:
+            await ctx.send("That server either doesn't exist, or I'm not present on it.")
+            return
     if g.mfa_level == 1:
         a = "The server requires 2FA for administration."
     else:
