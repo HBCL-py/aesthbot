@@ -289,6 +289,7 @@ async def yt(ctx, *, msg = None):
     await ctx.send("http://www.youtube.com/watch?v="+l)
     
 @bot.command(pass_context=True)    
+async def help(ctx):
     e = discord.Embed(title="HELP WITH COMMANDS",description="""**<> encompasses obligatory arguments. () encompasses optional arguments.**
 **~botinfo** => Sends information about this bot.
 **~userinfo** *(id or mention)* => Sends information about a certain user; the author of the message if not specified.
