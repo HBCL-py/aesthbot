@@ -309,7 +309,7 @@ async def esix(ctx, *, query=None):
     a = a[x]
     t = []
     for tag in a.tags:
-        if tag.type = "artist":
+        if tag.type == "artist":
             t.append(tag.name)
     t = ",".join(t)
     e = discord.Embed(title="#"+a.id+" - Score:"+p.score,
