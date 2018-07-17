@@ -6,5 +6,5 @@ chardet
 https://github.com/praw-dev/praw/archive/master.zip
 gdata
 atom
-esix
+https://github.com/e-six/esix-python/archive/v1.3.1.zip
 rule34
