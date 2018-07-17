@@ -132,9 +132,23 @@ The quick brown fox jumps over the lazy dog."""
 @bot.command(pass_context=True)    
 async def echo(ctx, msg = None):
     if msg == None:
-        ctx.send("Please, input the message to echo.")
+        await ctx.send("Please, input the message to echo.")
         return
     await ctx.send(msg)
     await ctx.message.delete()
+    
+@bot.command(pass_context=True)
+async def aesnick(ctx):
+    tab =  "　ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ１２３４５６７８９０！＂＃＄％＆／（）＝＇＼？＋＊［｛＾］｝｀，；．：－＿＜＞"
+    tab2 = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!"+'"'+"#$%&/()='"+'\\'+'?+*[{^]}`,;.:-_<>'
+    tran = str.maketrans(tab2, tab)
+    t = ctx.author.nick
+    if t is None:
+        t = ctx.author.name
+    try:
+        await ctx.author.edit(nick = t.translate(tran))
+        print("ACTION: Changed nickname of user {0}: '{1}' to '{2}'.".format(ctx.author, t, t.translate(tran)))
+    except discord.errors.Forbidden:
+        await ctx.send("ERROR: My privilege is too low...")
     
 bot.run(os.environ['BOT_TOKEN'])
