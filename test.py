@@ -31,7 +31,7 @@ async def botinfo(ctx):
 @bot.command(pass_context = True)
 async def servinfo(ctx, id = None):
     if id == None:
-        g = ctx.guild
+        g = ctx.guild.id
     if type(id) != int:
         await ctx.send("Please input a valid ID.")
         return
