@@ -230,7 +230,7 @@ async def userinfo(ctx, *, msg = None):
     else:
         await ctx.send("Ping less than 2 people only!")
         
-@bot.commands(pass_context=True)        
+@bot.command(pass_context=True)        
 async def servers(ctx):
     if ctx.author.id in owners:
         c = 1
@@ -238,7 +238,7 @@ async def servers(ctx):
             await ctx.send(str(c)+".-) "+str(server.name)+"; ID = "+str(server.id)+"~")
             c += 1        
         
-@bot.commands(pass_context=True)
+@bot.command(pass_context=True)
 async def reddit(ctx, msg=None):
     if msg == None:
         await ctx.send("Please give a subreddit!")
