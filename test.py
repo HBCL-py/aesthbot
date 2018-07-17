@@ -246,7 +246,7 @@ async def reddit(ctx, msg=None):
     a = []
     try:
         for submission in reddit.subreddit(sr).hot(limit=50):
-        a.append(submission)
+            a.append(submission)
     except prawcore.exceptions.BadRequest:
         await ctx.send("ERROR: An exception has occured. Please make sure you've given a correct subreddit id (use the name given in the link; /r/<subreddit>).")
         return
