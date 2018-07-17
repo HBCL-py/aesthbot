@@ -17,6 +17,27 @@ async def on_ready():
     print("Using discord.py v"+discord.__version__)
     print("__________________________________________________________________________")
     
+@bot.event
+async def on_member_remove(member):
+    try:
+        await member.guild.system_channel.send(':cry: {} has left this server :['.format(member))
+    except AttributeError:
+        return
+    
+@bot.event
+async def on_member_join(member):
+    try:  
+        await member.guild.system_channel.send(':wave: <@{}> just joined this server :]'.format(member.id))
+    except AttributeError:
+        return
+    
+@bot.event
+async def on_member_ban(server,member):
+    try:
+        await server.system_channel.send(':no_entry_sign: {} just got banned. >:[ :hammer:'.format(member))
+    except AttributeError:
+        return
+    
 @bot.command(pass_context = True)
 async def botinfo(ctx):
     e = discord.Embed(title="**BOT INFO**",
@@ -56,4 +77,18 @@ async def servinfo(ctx, id = None):
     await ctx.send(embed=e)
     await ctx.send("===============================================")
 
+@bot.command(pass_context=True)
+async def ping(ctx):
+    i = randint(1,5)
+        if i == 1:
+            await ctx.send("It's time to chew gum and kick ass... | "+str(round(bot.latency, 5))+"s")
+        if i == 2:
+            await ctx.send("Pong~ | "+str(round(bot.latency, 5))+"s")
+        if i == 3:
+            await ctx.send("A ping is a ping, you can't say it's only a half. | "+str(round(bot.latency, 5))+"s")
+        if i == 4:
+            await ctx.send("Beep boop~ | "+str(round(bot.latency, 5))+"s")
+        if i == 5:
+            await ctx.send("In case of doubt, shout Bell out! | "+str(round(bot.latency, 5))+"s")
+    
 bot.run(os.environ['BOT_TOKEN'])
