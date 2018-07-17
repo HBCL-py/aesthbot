@@ -268,7 +268,7 @@ async def reddit(ctx, msg=None):
             yt.pop(0)
             yt = yt[0]
             e.set_image(url = "http://img.youtube.com/vi/"+yt+"/maxresdefault.jpg")
-        elif a.url.startswith("https://www.youtube.com"):
+        if a.url.startswith("https://www.youtube.com"):
             yt = a.url.split("=")
             yt.pop(0)
             yt = yt[0]
