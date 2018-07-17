@@ -150,5 +150,29 @@ async def aesnick(ctx):
         print("ACTION: Changed nickname of user {0}: '{1}' to '{2}'.".format(ctx.author, t, t.translate(tran)))
     except discord.errors.Forbidden:
         await ctx.send("ERROR: My privilege is too low...")
+        
+@bot.command(pass_context = True)
+async def gameset(ctx, msg = None)
+    if ctx.author.id in owners:
+        if msg == None:
+            await ctx.send("Please give an input.")
+            return
+        await bot.change_presence(activity=discord.Game(msg))
+        print("ACTION: Status set to: 'Playing "+msg+"'")
+        await ctx.send("*Playing status* set to: '"+msg+"'")
+    else:
+        await ctx.send("ERROR: Owner-only command.")
+        
+@bot.command(pass_context = True)
+async def usern(ctx, msg = None)
+    if ctx.author.id in owners:
+        if msg == None:
+            await ctx.send("Please give an input.")
+            return
+        await bot.user.edit(username=msg)
+        print("ACTION: Username set to: '"+msg+"'")
+        await ctx.send("Username set to: '"+msg+"'")
+    else:
+        await ctx.send("ERROR: Owner-only command.")
     
 bot.run(os.environ['BOT_TOKEN'])
