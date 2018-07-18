@@ -66,7 +66,7 @@ async def botinfo(ctx):
 @bot.command(pass_context = True)
 async def servinfo(ctx, id = None):
     if id == None:
-        id = ctx.guild.id
+        g = ctx.guild
     else:
         try:
             id = int(id)
