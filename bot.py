@@ -254,7 +254,7 @@ async def reddit(ctx, msg=None):
     except prawcore.exceptions.BadRequest:
         await ctx.send("ERROR: An exception has occured. Please make sure you've given a correct subreddit id (use the name given in the link; /r/<subreddit>).")
         return
-    x = randint(0,(len(a)-1)
+    x = randint(0,(len(a)-1))
     a = a[x]
     e = discord.Embed(title=str(a.title),
                       url=str(a.shortlink),
