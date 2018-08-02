@@ -8,7 +8,7 @@ import praw
 import prawcore
 from scripts.yt import *
 from scripts.imgglitch import *
-import urllib, cStringIO
+import urllib, io
 
 endurl = (".gif",".png",".jpg",".jpeg",".gifv")
 
@@ -297,7 +297,7 @@ async def yt(ctx, *, msg = None):
 async def glitchef(ctx):
     if len(ctx.message.attachments) > 0:
         f = ctx.message.attachments[0]
-        file = cStringIO.StringIO(urllib.urlopen(f.url).read())
+        file = io.StringIO(urllib.urlopen(f.url).read())
         img = Image.open(file)
         a = glitch(img)
         a = discord.File(a, filename = "glitch.png")
