@@ -4,3 +4,8 @@ aiohttp
 websockets
 chardet
 https://github.com/praw-dev/praw/archive/master.zip
+git+https://github.com/Kareeeeem/jpglitch
+Pillow==2.6.1
+argparse==1.2.1
+click==3.3
+wsgiref==0.1.2
