@@ -7,6 +7,8 @@ import asyncio
 import praw
 import prawcore
 from scripts.yt import *
+from scripts.imgglitch import *
+import urllib, cStringIO
 
 endurl = (".gif",".png",".jpg",".jpeg",".gifv")
 
@@ -290,7 +292,18 @@ async def yt(ctx, *, msg = None):
     l = ytsearch(msg)
     l = l[0]
     await ctx.send("http://www.youtube.com/watch?v="+l)
-        
+    
+@bot.command(pass_context=True)
+async def glitchef(ctx):
+    if len(ctx.message.attachments) > 0:
+        f = ctx.message.attachments[0]
+        file = cStringIO.StringIO(urllib.urlopen(f.url).read())
+        img = Image.open(file)
+        a = glitch(img)
+        a = discord.File(a, filename = "glitch.png")
+        await ctx.send(file = a)
+    else:
+        await ctx.send("Please upload the file to glitch!)
     
 @bot.command(pass_context=True)    
 async def help(ctx):
