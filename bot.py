@@ -297,7 +297,7 @@ async def yt(ctx, *, msg = None):
 async def glitchef(ctx):
     if len(ctx.message.attachments) > 0:
         f = ctx.message.attachments[0]
-        file = io.StringIO(urllib.urlopen(f.url).read())
+        file = io.StringIO(urllib.request.urlopen(f.url).read())
         img = Image.open(file)
         a = glitch(img)
         a = discord.File(a, filename = "glitch.png")
