@@ -303,7 +303,7 @@ async def glitchef(ctx):
         a = discord.File(a, filename = "glitch.png")
         await ctx.send(file = a)
     else:
-        await ctx.send("Please upload the file to glitch!)
+        await ctx.send("Please upload the file to glitch!")
     
 @bot.command(pass_context=True)    
 async def help(ctx):
