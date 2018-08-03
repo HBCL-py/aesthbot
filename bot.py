@@ -293,7 +293,7 @@ async def yt(ctx, *, msg = None):
     l = l[0]
     await ctx.send("http://www.youtube.com/watch?v="+l)
     
-@bot.command(pass_context=True)
+'''@bot.command(pass_context=True)
 async def glitchef(ctx):
     if len(ctx.message.attachments) > 0:
         f = ctx.message.attachments[0]
@@ -303,7 +303,7 @@ async def glitchef(ctx):
         a = discord.File(a, filename = "glitch.png")
         await ctx.send(file = a)
     else:
-        await ctx.send("Please upload the file to glitch!")
+        await ctx.send("Please upload the file to glitch!")'''
     
 @bot.command(pass_context=True)    
 async def help(ctx):
